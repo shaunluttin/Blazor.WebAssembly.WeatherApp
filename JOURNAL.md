@@ -7,8 +7,8 @@ dotnet new sln
 dotnet new list blazer
 dotnet new blazorwasm --framework net8.0 --pwa --name WeatherApp.WebUI
 dotnet watch run --project .\WeatherApp.WebUI\WeatherApp.WebUI.csproj
+dotnet sln add .\WeatherApp.WebUI\WeatherApp.WebUI.csproj
 ```
-
 
 Pomodoros (25 minute blocks)
 

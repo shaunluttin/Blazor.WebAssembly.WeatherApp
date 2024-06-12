@@ -1,2 +1,11 @@
 # blazor-weather-app
-Sandbox for working with Blazor applications. 
+
+Demo Blazer Web Assembly web application.
+
+## Usuage
+
+```
+git clone git@github.com:shaunluttin/Blazor.WebAssembly.WeatherApp.git
+cd Blazor.WebAssembly.WeatherApp.git
+Start-Demo.ps1
+```
