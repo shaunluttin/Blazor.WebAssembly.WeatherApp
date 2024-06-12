@@ -1,6 +1,10 @@
 
 Wednesday 12 June 2024
 
+Use Blazor Web App instead of Blazor WebAssembly because:
+- it allows us to keep the WeatherAPI key private,
+- it provides out-of-the-box client/server communication.
+
 Useful Commands
 ```
 dotnet new sln
