@@ -21,6 +21,8 @@ dotnet new install bunit.template
 dotnet new bunit --targetSdk net8.0 --framework xunit -o WeatherApp.WebUI.Tests
 dotnet sln add .\WeatherApp.WebUI.Tests\WeatherApp.WebUI.Tests.csproj
 dotnet add .\WeatherApp.WebUI.Tests\WeatherApp.WebUI.Tests.csproj reference .\WeatherApp.WebUI\WeatherApp.WebUI.csproj
+dotnet user-secrets --project .\WeatherApp.WebUI\WeatherApp.WebUI.csproj init
+dotnet user-secrets --project .\WeatherApp.WebUI\WeatherApp.WebUI.csproj set "WeatherApiKey" "<SECRET>"
 ```
 
 # Wednesday 12 June 2024
