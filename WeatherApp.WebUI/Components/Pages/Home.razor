@@ -37,6 +37,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        cities = await WeatherService.GetCities();
+        cities = await WeatherService.SearchCities();
     }
 }
