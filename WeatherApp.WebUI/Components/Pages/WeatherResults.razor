@@ -71,8 +71,11 @@ else
 
     private CurrentWeatherDTO? currentWeather;
 
+    private ForecastedWeatherDTO? forecastedWeather;
+
     protected override async Task OnInitializedAsync()
     {
         currentWeather = await WeatherService.GetCurrentWeatherByCityId(CityId);
+        forecastedWeather = await WeatherService.GetWeatherForecastByCityId(CityId, days: 3);
     }
 }

@@ -14,15 +14,18 @@ public class WeatherApiService : IWeatherService
         _httpClient = httpClient;
     }
 
+    // TODO Maybe delete this, because the Forecast method includes current weather.
     public async Task<CurrentWeatherDTO> GetCurrentWeatherByCityId(int cityId)
     {
-        var requestUri = $"current.json?key={_apiKey}&q=id:{cityId}";
+        var requestPath = $"current.json?key={_apiKey}&q=id:{cityId}";
+        var result = await _httpClient.GetFromJsonAsync<CurrentWeatherDTO>(requestPath);
+        return result;
+    }
 
-        var temp = await _httpClient.GetAsync(requestUri);
-        var tempToo = await temp.Content.ReadAsStringAsync();
-        Console.WriteLine(tempToo);
-
-        var result = await _httpClient.GetFromJsonAsync<CurrentWeatherDTO>(requestUri);
+    public async Task<ForecastedWeatherDTO> GetWeatherForecastByCityId(int cityId, int days)
+    {
+        var requestPath = $"forecast.json?key={_apiKey}&q=id:{cityId}&days={days}&aqi=no&alerts=no";
+        var result = await _httpClient.GetFromJsonAsync<ForecastedWeatherDTO>(requestPath);
         return result;
     }
 
