@@ -6,5 +6,5 @@ public interface IWeatherService
 {
     Task<City[]> SearchCities(string searchTerm);
 
-    Task<WeatherReport> GetCityByCityId(int cityId);
+    Task<WeatherReport> GetCurrentWeatherByCityId(int cityId);
 }

@@ -1,4 +1,4 @@
-﻿@page "/weather"
+﻿@page "/weather/{CityName}/{CityId}"
 @using System.ComponentModel.DataAnnotations
 @using WeatherApp.WebUI.Models
 @using WeatherApp.WebUI.Services
@@ -32,16 +32,16 @@ else
 @code {
     @* We use this one simply to make the URI readably for the end-user. *@
     [Parameter]
-    public required int CityName {get; set;}
+    public required string CityName {get; set;}
 
     @* We use this one to lookup the city from the API. *@
     [Parameter]
-    public required int CityId {get; set;}
+    public required string CityId {get; set;}
 
     private WeatherReport currentWeather;
 
     protected override async Task OnInitializedAsync()
     {
-        currentWeather = await WeatherService.GetCityByCityId(CityId);
+        currentWeather = await WeatherService.GetCurrentWeatherByCityId(10);
     }
 }

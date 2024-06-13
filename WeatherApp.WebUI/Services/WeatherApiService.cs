@@ -14,9 +14,11 @@ public class WeatherApiService : IWeatherService
         _httpClient = httpClient;
     }
 
-    public Task<WeatherReport> GetCityByCityId(int cityId)
+    public async Task<WeatherReport> GetCurrentWeatherByCityId(int cityId)
     {
-        throw new NotImplementedException();
+        var requestUri = $"current.json?key={_apiKey}&q=id:{cityId}";
+        var result = await _httpClient.GetFromJsonAsync<WeatherReport>(requestUri);
+        return result;
     }
 
     public async Task<City[]> SearchCities(string searchTerm)
