@@ -14,9 +14,10 @@ public class WeatherApiService : IWeatherService
         _httpClient = httpClient;
     }
 
-    public async Task<City[]> SearchCities()
+    public async Task<City[]> SearchCities(string searchTerm)
     {
-        var results = await _httpClient.GetFromJsonAsync<City[]>($"/search.json?key={_apiKey}&q=Vancouver");
+        var requestUri = $"search.json?key={_apiKey}&q=${searchTerm}";
+        var results = await _httpClient.GetFromJsonAsync<City[]>(requestUri);
         return results ?? [];
     }
 }

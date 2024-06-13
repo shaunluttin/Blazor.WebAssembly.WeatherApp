@@ -13,7 +13,8 @@ builder.Services.AddRazorComponents()
 builder.Services.AddSingleton<IWeatherService, WeatherApiService>();
 builder.Services.AddHttpClient<IWeatherService, WeatherApiService>(client => 
 {
-    client.BaseAddress = new Uri("http://api.weatherapi.com/v1");
+    // The base address probably has to end with a trailing slash.
+    client.BaseAddress = new Uri("http://api.weatherapi.com/v1/");
 });
 
 var app = builder.Build();

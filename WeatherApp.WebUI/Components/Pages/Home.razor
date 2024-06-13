@@ -1,18 +1,24 @@
 ﻿@page "/"
+@rendermode InteractiveServer
+@* @attribute [StreamRendering] *@
 @using WeatherApp.WebUI.Services
 @using WeatherApp.WebUI.Models
 @inject IWeatherService WeatherService
 
 <PageTitle>Home</PageTitle>
 
-<h1>City List</h1>
+<h1>City Search</h1>
+
+<input type="text"/>
+<button class="btn btn-primary" @onclick="SearchWeatherForCityAsync">Search Async</button>
 
 @if (cities == null)
 {
-    <p><em>Loading...</em></p>
+    <p><em>Please search for city.</em></p>
 }
 else
 {
+    <p><em>Showing search results for @searchTerm</em></p>
     <table class="table">
         <thead>
             <tr>
@@ -35,8 +41,12 @@ else
 @code {
     private City[]? cities;
 
-    protected override async Task OnInitializedAsync()
+    private string searchTerm = "Empty";
+    
+    private async Task SearchWeatherForCityAsync()
     {
-        cities = await WeatherService.SearchCities();
+        // https://learn.microsoft.com/en-us/aspnet/core/blazor/components/event-handling
+        searchTerm = "VancouverAsync";
+        cities = await WeatherService.SearchCities("Vancouver");
     }
 }

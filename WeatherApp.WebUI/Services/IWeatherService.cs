@@ -4,5 +4,5 @@ namespace WeatherApp.WebUI.Services;
 
 public interface IWeatherService
 {
-    Task<City[]> SearchCities();
+    Task<City[]> SearchCities(string searchTerm);
 }
