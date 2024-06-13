@@ -8,6 +8,8 @@
 
 * Uninstall old versions of .NET, install .NET 8.0 SDK. Done.
 
+* Introduce Blazor component unit tests. Done.
+
 * Implement an IWeatherService that consumes the WeatherAPI.com service.*
 
 # Thursday 13 June 2024
