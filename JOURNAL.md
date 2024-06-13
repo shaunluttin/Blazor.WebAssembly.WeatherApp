@@ -14,7 +14,9 @@
 
 * Implement an IWeatherService that consumes the WeatherAPI.com service. Done.
 
-* Break out the list of cities into its own component.
+* Break out the list of cities into its own component. Done.
+
+* Create a results page and pass the city temperature to it.*
 
 # Requirements
 
@@ -29,7 +31,7 @@
 # Design 
 
 * [x] Create a homepage that allows users to search for the weather in a city.
-* [ ] Create a component for the city list and use it in the lists.
+* [x] Create a component for the city list and use it in the lists.
 * [ ] Create a results page that shows the weather for the selected city.
 * [ ] Include current temparature in F and C, Feels Like...
 
@@ -48,6 +50,7 @@ Resources:
 
 - https://learn.microsoft.com/en-us/aspnet/core/blazor/components/event-handling
 - https://learn.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
+- https://learn.microsoft.com/en-us/dotnet/architecture/blazor-for-web-forms-developers/components#data-binding
 
 # Wednesday 12 June 2024
 
