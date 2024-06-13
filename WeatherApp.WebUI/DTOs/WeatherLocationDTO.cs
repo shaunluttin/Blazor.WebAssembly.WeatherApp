@@ -1,6 +1,6 @@
-namespace WeatherApp.WebUI.Models;
+namespace WeatherApp.WebUI.DTOs;
 
-public class WeatherLocation
+public class WeatherLocationDTO
 {
     public string? Name { get; set; }
     public int Id { get; set; }

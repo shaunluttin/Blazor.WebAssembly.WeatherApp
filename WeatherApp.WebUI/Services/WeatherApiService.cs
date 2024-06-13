@@ -1,4 +1,4 @@
-using WeatherApp.WebUI.Models;
+using WeatherApp.WebUI.DTOs;
 
 namespace WeatherApp.WebUI.Services;
 
@@ -14,7 +14,7 @@ public class WeatherApiService : IWeatherService
         _httpClient = httpClient;
     }
 
-    public async Task<WeatherLocationReport> GetCurrentWeatherByCityId(int cityId)
+    public async Task<CurrentWeatherDTO> GetCurrentWeatherByCityId(int cityId)
     {
         var requestUri = $"current.json?key={_apiKey}&q=id:{cityId}";
 
@@ -22,14 +22,14 @@ public class WeatherApiService : IWeatherService
         var tempToo = await temp.Content.ReadAsStringAsync();
         Console.WriteLine(tempToo);
 
-        var result = await _httpClient.GetFromJsonAsync<WeatherLocationReport>(requestUri);
+        var result = await _httpClient.GetFromJsonAsync<CurrentWeatherDTO>(requestUri);
         return result;
     }
 
-    public async Task<WeatherLocation[]> SearchCities(string searchTerm)
+    public async Task<WeatherLocationDTO[]> SearchCities(string searchTerm)
     {
         var requestUri = $"search.json?key={_apiKey}&q=${searchTerm}";
-        var results = await _httpClient.GetFromJsonAsync<WeatherLocation[]>(requestUri);
+        var results = await _httpClient.GetFromJsonAsync<WeatherLocationDTO[]>(requestUri);
         return results ?? [];
     }
 }

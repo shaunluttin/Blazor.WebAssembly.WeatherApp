@@ -1,8 +1,8 @@
 using System.Text.Json.Serialization;
 
-namespace WeatherApp.WebUI.Models;
+namespace WeatherApp.WebUI.DTOs;
 
-public class WeatherReport
+public class WeatherDescriptionDTO
 {
     [JsonPropertyName("temp_f")]
     public double Fahrenheit { get; set; }

@@ -1,7 +1,7 @@
 ﻿@page "/"
 @rendermode InteractiveServer
 @using WeatherApp.WebUI.Services
-@using WeatherApp.WebUI.Models
+@using WeatherApp.WebUI.DTOs
 @using WeatherApp.WebUI.Components.Lists
 @inject IWeatherService WeatherService
 
@@ -17,7 +17,7 @@
 <CityList Cities="@cities"/>
 
 @code {
-    private WeatherLocation[]? cities;
+    private WeatherLocationDTO[]? cities;
 
     private ElementReference searchInput;
 

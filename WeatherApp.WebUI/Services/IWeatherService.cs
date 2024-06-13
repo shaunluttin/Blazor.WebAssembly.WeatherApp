@@ -1,10 +1,10 @@
-using WeatherApp.WebUI.Models;
+using WeatherApp.WebUI.DTOs;
 
 namespace WeatherApp.WebUI.Services;
 
 public interface IWeatherService
 {
-    Task<WeatherLocation[]> SearchCities(string searchTerm);
+    Task<WeatherLocationDTO[]> SearchCities(string searchTerm);
 
-    Task<WeatherLocationReport> GetCurrentWeatherByCityId(int cityId);
+    Task<CurrentWeatherDTO> GetCurrentWeatherByCityId(int cityId);
 }

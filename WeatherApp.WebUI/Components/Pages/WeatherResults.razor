@@ -1,6 +1,6 @@
 ﻿@page "/weather/{CityName}/{CityId:int}"
 @using System.ComponentModel.DataAnnotations
-@using WeatherApp.WebUI.Models
+@using WeatherApp.WebUI.DTOs
 @using WeatherApp.WebUI.Services
 @inject IWeatherService WeatherService
 
@@ -68,7 +68,7 @@ else
     [Parameter]
     public required int CityId {get; set;}
 
-    private WeatherLocationReport? report;
+    private CurrentWeatherDTO? report;
 
     protected override async Task OnInitializedAsync()
     {
