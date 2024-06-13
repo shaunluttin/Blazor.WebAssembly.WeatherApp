@@ -10,7 +10,7 @@
 <h1>City Search</h1>
 
 <form @onsubmit="SearchWeatherForCityAsync">
-    <input type="text" @bind="searchTerm" autofocus />
+    <input @ref="searchInput" type="text" @bind="searchTerm" autofocus />
     <button>Search</button>
 </form>
 
@@ -19,10 +19,18 @@
 @code {
     private WeatherLocation[]? cities;
 
+    private ElementReference searchInput;
+
     private string searchTerm = "";
     
     private async Task SearchWeatherForCityAsync()
     {
         cities = await WeatherService.SearchCities(@searchTerm);
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        // Unfortunately, the autofocus attribute didn't work.
+        searchInput.FocusAsync();
     }
 }
