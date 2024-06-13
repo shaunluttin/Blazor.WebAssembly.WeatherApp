@@ -8,7 +8,7 @@
 
 <h1>Weather</h1>
 
-@if (report == null)
+@if (currentWeather == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -25,36 +25,37 @@ else
             </tr>
         </thead>
             <tr>
+                @* TODO Consider not breaking the Law of Demeter here. *@
                 <th scope="col">Fahrenheit</th>
-                <td>@report.Current.Fahrenheit</td>
+                <td>@currentWeather.Current.Fahrenheit</td>
             </tr>
             <tr>
                 <th scope="col">Celsius</th>
-                <td>@report.Current.Celcius</td>
+                <td>@currentWeather.Current.Celcius</td>
             </tr>
             <tr>
                 <th scope="col">Feels Like, Fahrenheit</th>
-                <td>@report.Current.FeelsLikeFahrenheit</td>
+                <td>@currentWeather.Current.FeelsLikeFahrenheit</td>
             </tr>
             <tr>
                 <th scope="col">Feels Like, Celsius</th>
-                <td>@report.Current.FeelsLikeCelcius</td>
+                <td>@currentWeather.Current.FeelsLikeCelcius</td>
             </tr>
             <tr>
                 <th scope="col">Humidity</th>
-                <td>@report.Current.Humidity</td>
+                <td>@currentWeather.Current.Humidity</td>
             </tr>
             <tr>
                 <th scope="col">Atmospheric Pressure (MB)</th>
-                <td>@report.Current.AtmosphericPressure</td>
+                <td>@currentWeather.Current.AtmosphericPressure</td>
             </tr>
             <tr>
                 <th scope="col">Wind Speed (MPH)</th>
-                <td>@report.Current.WindSpeedMph</td>
+                <td>@currentWeather.Current.WindSpeedMph</td>
             </tr>
             <tr>
                 <th scope="col">UV Index:</th>
-                <td>@report.Current.UVIndex</td> 
+                <td>@currentWeather.Current.UVIndex</td> 
             </tr>
     </table>
 }
@@ -68,10 +69,10 @@ else
     [Parameter]
     public required int CityId {get; set;}
 
-    private CurrentWeatherDTO? report;
+    private CurrentWeatherDTO? currentWeather;
 
     protected override async Task OnInitializedAsync()
     {
-        report = await WeatherService.GetCurrentWeatherByCityId(CityId);
+        currentWeather = await WeatherService.GetCurrentWeatherByCityId(CityId);
     }
 }
