@@ -1,5 +1,42 @@
 ﻿@page "/"
+@using WeatherApp.WebUI.Services
+@using WeatherApp.WebUI.Models
+@inject IWeatherService WeatherService
 
 <PageTitle>Home</PageTitle>
 
 <h1>City List</h1>
+
+@if (cities == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var city in cities)
+            {
+                <tr>
+                    <td>@city.Name</td>
+                    <td>@city.Id</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private City[]? cities;
+
+    protected override async Task OnInitializedAsync()
+    {
+        cities = await WeatherService.GetCities();
+    }
+}

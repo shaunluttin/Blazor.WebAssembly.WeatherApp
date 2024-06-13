@@ -1,10 +1,14 @@
 using WeatherApp.WebUI.Components;
+using WeatherApp.WebUI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// Register server-side weather service.
+builder.Services.AddSingleton<IWeatherService, WeatherApiService>();
 
 var app = builder.Build();
 

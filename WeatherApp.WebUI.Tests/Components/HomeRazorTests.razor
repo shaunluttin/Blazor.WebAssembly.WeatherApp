@@ -1,0 +1,19 @@
+@inherits TestContext
+@using WeatherApp.WebUI.Components.Pages
+@using WeatherApp.WebUI.Services
+@using Moq
+
+@code {
+    [Fact]
+    public void HeaderContent_Always_ContainsExpectedText()
+    {
+        // Arrange
+        Services.AddSingleton<IWeatherService>(new Moq.Mock<IWeatherService>().Object);
+
+        // Act
+        var cut = Render(@<Home />);
+
+        // Assert
+        cut.Find("h1").MarkupMatches(@<h1>City List</h1>);
+    }
+}

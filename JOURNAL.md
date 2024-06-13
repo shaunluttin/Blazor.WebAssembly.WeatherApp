@@ -10,6 +10,8 @@
 
 * Introduce Blazor component unit tests. Done.
 
+* Handle service injection in the component test. Done.
+
 * Implement an IWeatherService that consumes the WeatherAPI.com service.*
 
 # Thursday 13 June 2024
