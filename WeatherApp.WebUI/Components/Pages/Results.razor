@@ -1,0 +1,47 @@
+﻿@page "/weather"
+@using System.ComponentModel.DataAnnotations
+@using WeatherApp.WebUI.Models
+@using WeatherApp.WebUI.Services
+@inject IWeatherService WeatherService
+
+<PageTitle>Weather</PageTitle>
+
+<h1>Weather</h1>
+
+<p>This component demonstrates showing data.</p>
+
+@if (currentWeather == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <ul>
+        <li>Fahrenheit: @currentWeather.Fahrenheit</li>
+        <li>Celsius</li>
+        <li>Feels Like, Fahrenheit</li>
+        <li>Feels Like, Celsius</li>
+        <li>Humidity</li>
+        <li>Atmospheric Pressure</li>
+        <li>Wind Speed</li>
+        <li>UV Index</li>
+        <li>3-day Forecast</li>
+    </ul>
+}
+
+@code {
+    @* We use this one simply to make the URI readably for the end-user. *@
+    [Parameter]
+    public required int CityName {get; set;}
+
+    @* We use this one to lookup the city from the API. *@
+    [Parameter]
+    public required int CityId {get; set;}
+
+    private WeatherReport currentWeather;
+
+    protected override async Task OnInitializedAsync()
+    {
+        currentWeather = await WeatherService.GetCityByCityId(CityId);
+    }
+}

@@ -16,6 +16,8 @@
 
 * Break out the list of cities into its own component. Done.
 
+* Read up on Blazor Web App routing, navigation, and data flowing.*
+
 * Create a results page and pass the city temperature to it.*
 
 # Requirements

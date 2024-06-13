@@ -23,7 +23,6 @@
     
     private async Task SearchWeatherForCityAsync()
     {
-        // https://learn.microsoft.com/en-us/aspnet/core/blazor/components/event-handling
         cities = await WeatherService.SearchCities(@searchTerm);
     }
 }

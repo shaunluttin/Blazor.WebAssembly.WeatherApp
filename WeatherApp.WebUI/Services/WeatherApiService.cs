@@ -14,6 +14,11 @@ public class WeatherApiService : IWeatherService
         _httpClient = httpClient;
     }
 
+    public Task<WeatherReport> GetCityByCityId(int cityId)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<City[]> SearchCities(string searchTerm)
     {
         var requestUri = $"search.json?key={_apiKey}&q=${searchTerm}";

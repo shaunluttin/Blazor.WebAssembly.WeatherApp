@@ -5,4 +5,6 @@ namespace WeatherApp.WebUI.Services;
 public interface IWeatherService
 {
     Task<City[]> SearchCities(string searchTerm);
+
+    Task<WeatherReport> GetCityByCityId(int cityId);
 }
