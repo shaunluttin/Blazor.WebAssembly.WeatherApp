@@ -1,4 +1,5 @@
 namespace WeatherApp.WebUI.Tests;
+using WeatherApp.WebUI.Components.Pages;
 
 /// <summary>
 /// These tests are written entirely in C#.
