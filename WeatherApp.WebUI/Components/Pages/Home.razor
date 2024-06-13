@@ -9,7 +9,7 @@
 
 <h1>City Search</h1>
 
-<input type="text"/>
+<input type="text" @bind="searchTerm" />
 <button class="btn btn-primary" @onclick="SearchWeatherForCityAsync">Search Async</button>
 
 @if (cities == null)
@@ -41,12 +41,11 @@ else
 @code {
     private City[]? cities;
 
-    private string searchTerm = "Empty";
+    private string searchTerm = "";
     
     private async Task SearchWeatherForCityAsync()
     {
         // https://learn.microsoft.com/en-us/aspnet/core/blazor/components/event-handling
-        searchTerm = "VancouverAsync";
-        cities = await WeatherService.SearchCities("Vancouver");
+        cities = await WeatherService.SearchCities(@searchTerm);
     }
 }
