@@ -8,25 +8,68 @@
 
 <h1>Weather</h1>
 
-<p>This component demonstrates showing data.</p>
-
 @if (report == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
+    <h3>Current</h3>
+
     <ul>
-        <li>Fahrenheit: @report.Current.Fahrenheit</li>
-        <li>Celsius</li>
-        <li>Feels Like, Fahrenheit</li>
-        <li>Feels Like, Celsius</li>
-        <li>Humidity</li>
-        <li>Atmospheric Pressure</li>
-        <li>Wind Speed</li>
-        <li>UV Index</li>
-        <li>3-day Forecast</li>
+        <li><b>Fahrenheit</b>: @report.Current.Fahrenheit</li>
+        <li><b>Celsius:</b> @report.Current.Celcius</li>
+        <li><b>Feels Like, Fahrenheit:</b> @report.Current.FeelsLikeFahrenheit</li>
+        <li><b>Feels Like, Celsius:</b> @report.Current.FeelsLikeCelcius</li>
+        <li><b>Humidity:</b> @report.Current.Humidity</li>
+        <li><b>Atmospheric Pressure (MB):</b> @report.Current.AtmosphericPressure</li>
+        <li><b>Wind Speed (MPH):</b> @report.Current.WindSpeedMph</li>
+        <li><b>UV Index:</b> @report.Current.UVIndex</li>
     </ul>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Current</th>
+                <th scope="col">1 Day</th>
+                <th scope="col">2 Day</th>
+                <th scope="col">3 Day</th>
+            </tr>
+        </thead>
+            <tr>
+                <th scope="col">Fahrenheit</th>
+                <td>@report.Current.Fahrenheit</td>
+            </tr>
+            <tr>
+                <th scope="col">Celsius</th>
+                <td>@report.Current.Celcius</td>
+            </tr>
+            <tr>
+                <th scope="col">Feels Like, Fahrenheit</th>
+                <td>@report.Current.FeelsLikeFahrenheit</td>
+            </tr>
+            <tr>
+                <th scope="col">Feels Like, Celsius</th>
+                <td>@report.Current.FeelsLikeCelcius</td>
+            </tr>
+            <tr>
+                <th scope="col">Humidity</th>
+                <td>@report.Current.Humidity</td>
+            </tr>
+            <tr>
+                <th scope="col">Atmospheric Pressure (MB)</th>
+                <td>@report.Current.AtmosphericPressure</td>
+            </tr>
+            <tr>
+                <th scope="col">Wind Speed (MPH)</th>
+                <td>@report.Current.WindSpeedMph</td>
+            </tr>
+            <tr>
+                <th scope="col">UV Index:</th>
+                <td>@report.Current.UVIndex</td> 
+            </tr>
+    </table>
 }
 
 @code {

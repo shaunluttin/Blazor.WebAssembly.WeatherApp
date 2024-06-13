@@ -1,0 +1,47 @@
+{
+  "location": {
+    "name": "Andorra La Vella",
+    "region": "Andorra la Vella",
+    "country": "Andorra",
+    "lat": 42.5,
+    "lon": 1.52,
+    "tz_id": "Europe/Andorra",
+    "localtime_epoch": 1718317769,
+    "localtime": "2024-06-14 0:29"
+  },
+  "current": {
+    "last_updated_epoch": 1718316900,
+    "last_updated": "2024-06-14 00:15",
+    "temp_c": 4.3,
+    "temp_f": 39.7,
+    "is_day": 0,
+    "condition": {
+      "text": "Clear",
+      "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+      "code": 1000
+    },
+    "wind_mph": 2.2,
+    "wind_kph": 3.6,
+    "wind_degree": 71,
+    "wind_dir": "ENE",
+    "pressure_mb": 1020.0,
+    "pressure_in": 30.11,
+    "precip_mm": 0.0,
+    "precip_in": 0.0,
+    "humidity": 66,
+    "cloud": 20,
+    "feelslike_c": 4.3,
+    "feelslike_f": 39.7,
+    "windchill_c": 4.3,
+    "windchill_f": 39.7,
+    "heatindex_c": 4.3,
+    "heatindex_f": 39.7,
+    "dewpoint_c": -1.6,
+    "dewpoint_f": 29.2,
+    "vis_km": 10.0,
+    "vis_miles": 6.0,
+    "uv": 1.0,
+    "gust_mph": 6.7,
+    "gust_kph": 10.8
+  }
+}
