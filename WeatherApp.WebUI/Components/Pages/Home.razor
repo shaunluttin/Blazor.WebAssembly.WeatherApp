@@ -10,14 +10,14 @@
 <h1>City Search</h1>
 
 <form @onsubmit="SearchWeatherForCityAsync">
-    <input type="text" @bind="searchTerm" />
+    <input type="text" @bind="searchTerm" autofocus />
     <button>Search</button>
 </form>
 
 <CityList Cities="@cities"/>
 
 @code {
-    private City[]? cities;
+    private WeatherLocation[]? cities;
 
     private string searchTerm = "";
     

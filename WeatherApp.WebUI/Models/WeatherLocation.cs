@@ -1,6 +1,6 @@
 namespace WeatherApp.WebUI.Models;
 
-public class City
+public class WeatherLocation
 {
     public string? Name { get; set; }
     public int Id { get; set; }

@@ -53,6 +53,7 @@ Resources:
 - https://learn.microsoft.com/en-us/aspnet/core/blazor/components/event-handling
 - https://learn.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
 - https://learn.microsoft.com/en-us/dotnet/architecture/blazor-for-web-forms-developers/components#data-binding
+- https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets
 
 # Wednesday 12 June 2024
 

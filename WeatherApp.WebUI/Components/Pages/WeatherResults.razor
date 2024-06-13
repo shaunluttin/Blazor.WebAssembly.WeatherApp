@@ -10,14 +10,14 @@
 
 <p>This component demonstrates showing data.</p>
 
-@if (currentWeather == null)
+@if (report == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
     <ul>
-        <li>Fahrenheit: @currentWeather.Fahrenheit</li>
+        <li>Fahrenheit: @report.Current.Fahrenheit</li>
         <li>Celsius</li>
         <li>Feels Like, Fahrenheit</li>
         <li>Feels Like, Celsius</li>
@@ -38,10 +38,10 @@ else
     [Parameter]
     public required string CityId {get; set;}
 
-    private WeatherReport currentWeather;
+    private WeatherLocationReport report;
 
     protected override async Task OnInitializedAsync()
     {
-        currentWeather = await WeatherService.GetCurrentWeatherByCityId(10);
+        report = await WeatherService.GetCurrentWeatherByCityId(10);
     }
 }

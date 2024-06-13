@@ -9,22 +9,27 @@ public class WeatherApiService : IWeatherService
 
     public WeatherApiService(IConfiguration config, HttpClient httpClient)
     {
-        // See also https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets
+        // See also 
         _apiKey = config["WeatherApiKey"];
         _httpClient = httpClient;
     }
 
-    public async Task<WeatherReport> GetCurrentWeatherByCityId(int cityId)
+    public async Task<WeatherLocationReport> GetCurrentWeatherByCityId(int cityId)
     {
         var requestUri = $"current.json?key={_apiKey}&q=id:{cityId}";
-        var result = await _httpClient.GetFromJsonAsync<WeatherReport>(requestUri);
+
+        var temp = await _httpClient.GetAsync(requestUri);
+        var tempToo = await temp.Content.ReadAsStringAsync();
+        Console.WriteLine(tempToo);
+
+        var result = await _httpClient.GetFromJsonAsync<WeatherLocationReport>(requestUri);
         return result;
     }
 
-    public async Task<City[]> SearchCities(string searchTerm)
+    public async Task<WeatherLocation[]> SearchCities(string searchTerm)
     {
         var requestUri = $"search.json?key={_apiKey}&q=${searchTerm}";
-        var results = await _httpClient.GetFromJsonAsync<City[]>(requestUri);
+        var results = await _httpClient.GetFromJsonAsync<WeatherLocation[]>(requestUri);
         return results ?? [];
     }
 }
