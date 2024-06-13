@@ -9,8 +9,10 @@
 
 <h1>City Search</h1>
 
-<input type="text" @bind="searchTerm" />
-<button class="btn btn-primary" @onclick="SearchWeatherForCityAsync">Search</button>
+<form @onsubmit="SearchWeatherForCityAsync">
+    <input type="text" @bind="searchTerm" />
+    <button class="btn btn-primary">Search</button>
+</form>
 
 @if (cities == null)
 {
