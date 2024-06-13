@@ -12,7 +12,24 @@
 
 * Handle service injection in the component test. Done.
 
-* Implement an IWeatherService that consumes the WeatherAPI.com service.*
+* Implement an IWeatherService that consumes the WeatherAPI.com service. Done.
+
+# Requirements
+
+* [x] Create a user interface for user to search for weather in a city. 
+* [ ] User the public WeatherAPI to obtain weather information. 
+* [x] Use the provided API key.
+* [x] Use proper API key management. 
+* [x] Display the search results using the Search/Autocomplete service.
+* [ ] Display the weather information for the selected city using WeatherAPI data.
+* [ ] Allow users to save cities as favorites and view their list of favorites.
+
+# Design 
+
+* [x] Create a homepage that allows users to search for the weather in a city.
+* [ ] Create a component for the city list and use it in the lists.
+* [ ] Create a results page that shows the weather for the selected city.
+* [ ] Include current temparature in F and C, Feels Like...
 
 # Thursday 13 June 2024
 
