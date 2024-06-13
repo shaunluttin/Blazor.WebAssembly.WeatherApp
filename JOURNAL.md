@@ -14,6 +14,8 @@
 
 * Implement an IWeatherService that consumes the WeatherAPI.com service. Done.
 
+* Break out the list of cities into its own component.
+
 # Requirements
 
 * [x] Create a user interface for user to search for weather in a city. 

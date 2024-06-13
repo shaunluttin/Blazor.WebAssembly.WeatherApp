@@ -1,8 +1,8 @@
 ﻿@page "/"
 @rendermode InteractiveServer
-@* @attribute [StreamRendering] *@
 @using WeatherApp.WebUI.Services
 @using WeatherApp.WebUI.Models
+@using WeatherApp.WebUI.Components.Lists
 @inject IWeatherService WeatherService
 
 <PageTitle>Home</PageTitle>
@@ -14,31 +14,8 @@
     <button class="btn btn-primary">Search</button>
 </form>
 
-@if (cities == null)
-{
-    <p><em>Please search for city.</em></p>
-}
-else
-{
-    <p><em>Showing search results for @searchTerm</em></p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Id</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var city in cities)
-            {
-                <tr>
-                    <td>@city.Name</td>
-                    <td>@city.Id</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+<CityList Cities="@cities"/>
+
 
 @code {
     private City[]? cities;
