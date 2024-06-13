@@ -1,4 +1,4 @@
-﻿@page "/weather/{CityName}/{CityId}"
+﻿@page "/weather/{CityName}/{CityId:int}"
 @using System.ComponentModel.DataAnnotations
 @using WeatherApp.WebUI.Models
 @using WeatherApp.WebUI.Services
@@ -14,19 +14,6 @@
 }
 else
 {
-    <h3>Current</h3>
-
-    <ul>
-        <li><b>Fahrenheit</b>: @report.Current.Fahrenheit</li>
-        <li><b>Celsius:</b> @report.Current.Celcius</li>
-        <li><b>Feels Like, Fahrenheit:</b> @report.Current.FeelsLikeFahrenheit</li>
-        <li><b>Feels Like, Celsius:</b> @report.Current.FeelsLikeCelcius</li>
-        <li><b>Humidity:</b> @report.Current.Humidity</li>
-        <li><b>Atmospheric Pressure (MB):</b> @report.Current.AtmosphericPressure</li>
-        <li><b>Wind Speed (MPH):</b> @report.Current.WindSpeedMph</li>
-        <li><b>UV Index:</b> @report.Current.UVIndex</li>
-    </ul>
-
     <table class="table">
         <thead>
             <tr>
@@ -79,12 +66,12 @@ else
 
     @* We use this one to lookup the city from the API. *@
     [Parameter]
-    public required string CityId {get; set;}
+    public required int CityId {get; set;}
 
-    private WeatherLocationReport report;
+    private WeatherLocationReport? report;
 
     protected override async Task OnInitializedAsync()
     {
-        report = await WeatherService.GetCurrentWeatherByCityId(10);
+        report = await WeatherService.GetCurrentWeatherByCityId(CityId);
     }
 }
