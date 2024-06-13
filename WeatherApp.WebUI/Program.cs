@@ -7,9 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-// Register server-side weather service
-// and give it an HTTP Client.
-// See https://learn.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
+// Register server-side weather service with an HTTP Client.
 builder.Services.AddSingleton<IWeatherService, WeatherApiService>();
 builder.Services.AddHttpClient<IWeatherService, WeatherApiService>(client => 
 {

@@ -42,6 +42,11 @@ dotnet user-secrets --project .\WeatherApp.WebUI\WeatherApp.WebUI.csproj init
 dotnet user-secrets --project .\WeatherApp.WebUI\WeatherApp.WebUI.csproj set "WeatherApiKey" "<SECRET>"
 ```
 
+Resources:
+
+- https://learn.microsoft.com/en-us/aspnet/core/blazor/components/event-handling
+- https://learn.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
+
 # Wednesday 12 June 2024
 
 Use Blazor Web App instead of Blazor WebAssembly because:
