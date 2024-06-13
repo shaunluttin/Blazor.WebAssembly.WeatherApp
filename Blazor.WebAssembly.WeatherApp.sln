@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.WebUI", "WeatherApp.WebUI\WeatherApp.WebUI.csproj", "{CAC8B290-3C3D-42B1-A31D-53C20B5145F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.WebUI.Tests", "WeatherApp.WebUI.Tests\WeatherApp.WebUI.Tests.csproj", "{9F296335-1F15-4BD2-A235-EF728475D6DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{CAC8B290-3C3D-42B1-A31D-53C20B5145F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAC8B290-3C3D-42B1-A31D-53C20B5145F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAC8B290-3C3D-42B1-A31D-53C20B5145F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F296335-1F15-4BD2-A235-EF728475D6DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F296335-1F15-4BD2-A235-EF728475D6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F296335-1F15-4BD2-A235-EF728475D6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F296335-1F15-4BD2-A235-EF728475D6DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
