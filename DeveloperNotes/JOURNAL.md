@@ -1,27 +1,3 @@
-# Pomodoros (25 minute blocks)
-
-* Analyze initial requirements. Done. 
-
-* Review demo projects from dotnet/blazor-samples/8.0. Done.
-
-* Create new GitHub repository with a Blazor WebAssembly client app.
-
-* Uninstall old versions of .NET, install .NET 8.0 SDK. Done.
-
-* Introduce Blazor component unit tests. Done.
-
-* Handle service injection in the component test. Done.
-
-* Implement an IWeatherService that consumes the WeatherAPI.com service. Done.
-
-* Break out the list of cities into its own component. Done.
-
-* Read up on Blazor Web App routing, navigation, and data flowing. Done.
-
-* Create a results page and pass the city temperature to it. Done.
-
-* Add an API to add, delete, and list favorites.
-
 # Requirements
 
 * [x] Create a user interface for user to search for weather in a city. 
@@ -52,6 +28,31 @@
 * [ ] Handle errors and exception appropriatly when public API is not available.
 * [ ] Handle other API error responses appropriately.
 * [ ] Nice-to-have: protect the API endpoints basic Auth0.
+
+# Pomodoros (25 minute blocks)
+
+* Analyze initial requirements. Done. 
+
+* Review demo projects from dotnet/blazor-samples/8.0. Done.
+
+* Create new GitHub repository with a Blazor WebAssembly client app.
+
+* Uninstall old versions of .NET, install .NET 8.0 SDK. Done.
+
+* Introduce Blazor component unit tests. Done.
+
+* Handle service injection in the component test. Done.
+
+* Implement an IWeatherService that consumes the WeatherAPI.com service. Done.
+
+* Break out the list of cities into its own component. Done.
+
+* Read up on Blazor Web App routing, navigation, and data flowing. Done.
+
+* Create a results page and pass the city temperature to it. Done.
+
+* Add an API to add, delete, and list favorites. Done.
+
 
 # Friday 14 June 2024
 
