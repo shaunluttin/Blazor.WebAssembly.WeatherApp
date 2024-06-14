@@ -19,15 +19,20 @@
     @* TODO Populate this programmatically from the database. *@
     private bool IsFavorite = false;
 
-    private Task AddToFavorites()
+    protected override async Task OnInitializedAsync()
     {
-        IsFavorite = true;
-        return Task.CompletedTask;
+        IsFavorite = await FavoritesService.IsFavorite(CityId);
     }
 
-    private Task RemoveFromFavorites()
+    private async Task AddToFavorites()
     {
+        await FavoritesService.AddFavorite(CityId, CityName);
+        IsFavorite = true;
+    }
+
+    private async Task RemoveFromFavorites()
+    {
+        await FavoritesService.RemoveFavorite(CityId);
         IsFavorite = false;
-        return Task.CompletedTask;
     }
 }

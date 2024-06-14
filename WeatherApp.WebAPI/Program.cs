@@ -33,9 +33,6 @@ app.MapPost("/favorites", async (WeatherDb db, FavoriteCity city) => {
 // Get
 app.MapGet("/favorites", async (WeatherDb db) =>
 {
-    Console.WriteLine("----");
-    Console.WriteLine("GetFavorites");
-    Console.WriteLine("----");
     var results = await db.FavoriteCities.ToListAsync();
     return results;
 })

@@ -17,10 +17,8 @@ public class FavoritesService : IFavoritesService
 
     public async Task AddFavorite(int cityId, string cityName)
     {
-        Console.WriteLine("Adding");
         var requestPath = "favorites";
         await _httpClient.PostAsJsonAsync(requestPath, new { cityId, cityName });
-        Console.WriteLine("Added");
     }
 
     public async Task<FavoriteCityDTO[]> GetFavorites()
@@ -28,5 +26,26 @@ public class FavoritesService : IFavoritesService
         var requestPath = "favorites";
         var result = await _httpClient.GetFromJsonAsync<FavoriteCityDTO[]>(requestPath);
         return result;
+    }
+
+    public async Task<bool> IsFavorite(int cityId)
+    {
+        var favorites = await GetFavorites();
+        return favorites.Any(f => f.CityId == cityId);
+    }
+
+    public async Task RemoveFavorite(int cityId)
+    {
+        Console.WriteLine("-------");
+        Console.WriteLine("Remove");
+        Console.WriteLine("-------");
+        var requestPath = $"favorites?cityId={cityId}";
+        Console.WriteLine("-------");
+        Console.WriteLine(requestPath);
+        Console.WriteLine("-------");
+        await _httpClient.DeleteAsync(requestPath);
+        Console.WriteLine("-------");
+        Console.WriteLine("Removed");
+        Console.WriteLine("-------");
     }
 }
