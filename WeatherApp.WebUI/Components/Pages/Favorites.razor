@@ -1,9 +1,23 @@
 ﻿@page "/favorites"
 @rendermode InteractiveServer
+@using WeatherApp.WebUI.Services
+@using WeatherApp.WebUI.DTOs
+@inject IFavoritesService FavoritesService
 
 <PageTitle>Favorites</PageTitle>
 
 <h1>Favorites</h1>
 
+@foreach (var favorite in favorites)
+{
+    <p>favorite</p>
+}
+
 @code {
+    private string[]? favorites;
+
+    protected override async Task OnInitializedAsync()
+    {
+        favorites = await FavoritesService.GetFavorites();
+    }
 }

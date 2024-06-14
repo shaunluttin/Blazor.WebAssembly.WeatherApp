@@ -1,3 +1,4 @@
+
 namespace WeatherApp.WebUI.Services;
 
 public class FavoritesService : IFavoritesService
@@ -10,5 +11,10 @@ public class FavoritesService : IFavoritesService
         // TODO Populate and use the Internal API Key.
         _apiKey = config["InternalApiKey"];
         _httpClient = httpClient;
+    }
+
+    public Task<string[]> GetFavorites()
+    {
+        return Task.FromResult(new string[] {"", "", ""});
     }
 }
