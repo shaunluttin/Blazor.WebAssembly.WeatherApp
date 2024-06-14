@@ -16,9 +16,11 @@
 
 * Break out the list of cities into its own component. Done.
 
-* Read up on Blazor Web App routing, navigation, and data flowing.*
+* Read up on Blazor Web App routing, navigation, and data flowing. Done.
 
-* Create a results page and pass the city temperature to it.*
+* Create a results page and pass the city temperature to it. Done.
+
+* Add an API to add, delete, and list favorites.
 
 # Requirements
 
@@ -28,8 +30,7 @@
 * [x] Use proper API key management. 
 * [x] Display the search results using the Search/Autocomplete service.
 * [x] Display the weather information for the selected city using WeatherAPI data.
-* [ ] Allow users to save cities as favorites and view their list of favorites.
-* [ ]
+* [ ] Allow users to save cities as favorites and view their list of favorites.*
 
 # Design 
 
