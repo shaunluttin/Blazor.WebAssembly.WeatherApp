@@ -4,5 +4,5 @@ namespace WeatherApp.WebUI.Services;
 
 public interface IFavoritesService
 {
-    Task<string[]> GetFavorites();
+    Task<FavoriteCityDTO[]> GetFavorites();
 }

@@ -8,13 +8,20 @@
 
 <h1>Favorites</h1>
 
-@foreach (var favorite in favorites)
+@if(favorites != null) 
 {
-    <p>favorite</p>
+    @foreach (var favorite in favorites)
+    {
+        <p>@favorite.CityName</p>
+        <p>@favorite.CityId</p>
+
+        @* TODO Add current weather for city. *@
+        <p>Current Weather</p>
+    }
 }
 
 @code {
-    private string[]? favorites;
+    private FavoriteCityDTO[]? favorites;
 
     protected override async Task OnInitializedAsync()
     {

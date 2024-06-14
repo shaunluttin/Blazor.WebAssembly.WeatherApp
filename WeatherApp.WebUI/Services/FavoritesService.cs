@@ -1,4 +1,6 @@
 
+using WeatherApp.WebUI.DTOs;
+
 namespace WeatherApp.WebUI.Services;
 
 public class FavoritesService : IFavoritesService
@@ -13,8 +15,10 @@ public class FavoritesService : IFavoritesService
         _httpClient = httpClient;
     }
 
-    public Task<string[]> GetFavorites()
+    public async Task<FavoriteCityDTO[]> GetFavorites()
     {
-        return Task.FromResult(new string[] {"", "", ""});
+        var requestPath = "favorites";
+        var result = await _httpClient.GetFromJsonAsync<FavoriteCityDTO[]>(requestPath);
+        return result;
     }
 }
