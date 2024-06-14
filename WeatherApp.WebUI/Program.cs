@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using WeatherApp.WebUI.Components;
 using WeatherApp.WebUI.Services;
 
@@ -9,19 +10,19 @@ builder.Services.AddRazorComponents()
 
 // Register third-party WeatherAPI service with an HTTP Client.
 builder.Services.AddSingleton<IWeatherService, WeatherApiServiceV1>();
-builder.Services.AddHttpClient<IWeatherService, WeatherApiServiceV1>(client => 
+builder.Services.AddHttpClient<IWeatherService, WeatherApiServiceV1>(client =>
 {
     // The base address probably has to end with a trailing slash.
-    var baseAddress = builder.Configuration["DEMO_WeatherApiBaseAddress"];
+    var baseAddress = GetConfigValue("DEMO_WeatherApiBaseAddress");
     client.BaseAddress = new Uri(baseAddress);
 });
 
 // Register internal WeatherApp service with an HTTP Client.
 builder.Services.AddSingleton<IFavoritesService, FavoritesService>();
-builder.Services.AddHttpClient<IFavoritesService, FavoritesService>(client => 
+builder.Services.AddHttpClient<IFavoritesService, FavoritesService>(client =>
 {
     // The base address probably has to end with a trailing slash.
-    var baseAddress = builder.Configuration["DEMO_InternalApiBaseAddress"];
+    var baseAddress = GetConfigValue("DEMO_InternalApiBaseAddress");
     client.BaseAddress = new Uri(baseAddress);
 });
 
@@ -44,3 +45,15 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
 app.Run();
+
+string GetConfigValue(string key)
+{
+    var result = builder.Configuration[key];
+
+    if (result == null)
+    {
+        throw new InvalidOperationException($"Missing configuration for key {key}.");
+    }
+
+    return result;
+}
