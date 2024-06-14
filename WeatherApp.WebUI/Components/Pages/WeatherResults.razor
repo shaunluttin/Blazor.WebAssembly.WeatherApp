@@ -29,38 +29,38 @@ else
             <tr>
                 @* TODO Consider not breaking the Law of Demeter here. *@
                 <th scope="col">Current Temp</th>
-                <td>@currentWeather.Fahrenheit</td>
+                <td>@currentWeather.Current.Fahrenheit</td>
             </tr>
             <tr>
                 <th scope="col">Feels Like</th>
-                <td>@currentWeather.FeelsLikeFahrenheit</td>
+                <td>@currentWeather.Current.FeelsLikeFahrenheit</td>
             </tr>
             <tr>
                 <th colspan="2" scope="col">Celcius</th>
             </tr>
             <tr>
                 <th scope="col">Current Temp</th>
-                <td>@currentWeather.Celcius</td>
+                <td>@currentWeather.Current.Celcius</td>
             </tr>
             <tr>
                 <th scope="col">Feels Like</th>
-                <td>@currentWeather.FeelsLikeCelcius</td>
+                <td>@currentWeather.Current.FeelsLikeCelcius</td>
             </tr>
             <tr>
                 <th scope="col">Humidity</th>
-                <td>@currentWeather.Humidity</td>
+                <td>@currentWeather.Current.Humidity</td>
             </tr>
             <tr>
                 <th scope="col">Atmospheric Pressure (MB)</th>
-                <td>@currentWeather.AtmosphericPressure</td>
+                <td>@currentWeather.Current.AtmosphericPressure</td>
             </tr>
             <tr>
                 <th scope="col">Wind Speed (MPH)</th>
-                <td>@currentWeather.WindSpeedMph</td>
+                <td>@currentWeather.Current.WindSpeedMph</td>
             </tr>
             <tr>
-                <th scope="col">UV Index</th>
-                <td>@currentWeather.UVIndex</td> 
+                <th scope="col">UV Index:</th>
+                <td>@currentWeather.Current.UVIndex</td> 
             </tr>
         </tbody>
     </table>
@@ -138,18 +138,17 @@ else
     [Parameter]
     public required int CityId {get; set;}
 
-    private WeatherDescriptionDTO? currentWeather;
+    private CurrentWeatherDTO? currentWeather;
 
-    private IEnumerable<ForecastDayDTO>? forecastDays;
+    private IEnumerable<ForecastDayDTO> forecastDays;
 
     protected override async Task OnInitializedAsync()
     {
-        var currentWeatherDTO = await WeatherService.GetCurrentWeatherByCityId(CityId);
-        var currentWeather = currentWeatherDTO.Current;
+        currentWeather = await WeatherService.GetCurrentWeatherByCityId(CityId);
 
         // The forecast includes the current date,
         // so we pass one extra and then skip the first one.
-        var forecastedWeatherDTO = await WeatherService.GetWeatherForecastByCityId(CityId, days: 4);
-        forecastDays = forecastedWeatherDTO.Forecast.ForecastDay.Skip(1);
+        var forecastedWeather = await WeatherService.GetWeatherForecastByCityId(CityId, days: 4);
+        forecastDays = forecastedWeather.Forecast.ForecastDay.Skip(1);
     }
 }
