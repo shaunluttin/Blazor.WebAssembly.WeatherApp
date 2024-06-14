@@ -15,6 +15,14 @@ public class FavoritesService : IFavoritesService
         _httpClient = httpClient;
     }
 
+    public async Task AddFavorite(int cityId, string cityName)
+    {
+        Console.WriteLine("Adding");
+        var requestPath = "favorites";
+        await _httpClient.PostAsJsonAsync(requestPath, new { cityId, cityName });
+        Console.WriteLine("Added");
+    }
+
     public async Task<FavoriteCityDTO[]> GetFavorites()
     {
         var requestPath = "favorites";

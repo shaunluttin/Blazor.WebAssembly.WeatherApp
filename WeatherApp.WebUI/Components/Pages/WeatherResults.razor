@@ -1,12 +1,20 @@
 ﻿@page "/weather/{CityName}/{CityId:int}"
+@rendermode InteractiveServer
 @using System.ComponentModel.DataAnnotations
 @using WeatherApp.WebUI.DTOs
 @using WeatherApp.WebUI.Services
 @inject IWeatherService WeatherService
+@inject IFavoritesService FavoritesService
 
 <PageTitle>Weather for @CityName</PageTitle>
 
 <h1>Weather for @CityName</h1>
+
+@if(IsFavorite) {
+    <button @onclick="RemoveFromFavorites">Remove from Favorites</button>
+} else {
+    <button @onclick="AddToFavorites">Add to Favorites</button>
+}
 
 @if (currentWeather == null)
 {
@@ -149,5 +157,21 @@ else
         // so we pass one extra and then skip the first one.
         var forecastedWeatherDTO = await WeatherService.GetWeatherForecastByCityId(CityId, days: 4);
         forecastDays = forecastedWeatherDTO.Forecast.ForecastDay.Skip(1);
+    }
+
+    @* TODO Populate this programmatically from the database. *@
+    @* TODO Break out an FavoritesButton component *@
+    private bool IsFavorite = false;
+
+    private Task AddToFavorites()
+    {
+        IsFavorite = true;
+        return Task.CompletedTask;
+    }
+
+    private Task RemoveFromFavorites()
+    {
+        IsFavorite = false;
+        return Task.CompletedTask;
     }
 }
