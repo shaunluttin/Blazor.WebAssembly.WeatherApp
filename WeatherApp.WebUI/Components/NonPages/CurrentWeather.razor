@@ -1,0 +1,61 @@
+@using WeatherApp.WebUI.DTOs
+
+@if (WeatherDescription == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-sm table-bordered table-weather table-weather-current">
+        <caption class="caption-top">Current Weather</caption>
+        <tbody>
+            <tr>
+                <th class="th-section table-active" colspan="2" scope="col">Fahrenheit</th>
+            </tr>
+            <tr>
+                <th class="th-nested" scope="col">Temperature</th>
+                <td>@WeatherDescription.Fahrenheit</td>
+            </tr>
+            <tr>
+                <th class="th-nested" scope="col">Feels Like</th>
+                <td>@WeatherDescription.FeelsLikeFahrenheit</td>
+            </tr>
+            <tr>
+                <th class="th-section table-active" colspan="2" scope="col">Celcius</th>
+            </tr>
+            <tr>
+                <th class="th-nested" scope="col">Temperature</th>
+                <td>@WeatherDescription.Celcius</td>
+            </tr>
+            <tr>
+                <th class="th-nested" scope="col">Feels Like</th>
+                <td>@WeatherDescription.FeelsLikeCelcius</td>
+            </tr>
+            <tr>
+                <th class="th-section table-active" colspan="2" scope="col">Other Measures</th>
+            </tr>
+            <tr>
+                <th class="th-nested" scope="col">Humidity (%)</th>
+                <td>@WeatherDescription.Humidity</td>
+            </tr>
+            <tr>
+                <th class="th-nested" scope="col">Atmospheric Pressure (MB)</th>
+                <td>@WeatherDescription.AtmosphericPressure</td>
+            </tr>
+            <tr>
+                <th class="th-nested" scope="col">Wind Speed (MPH)</th>
+                <td>@WeatherDescription.WindSpeedMph</td>
+            </tr>
+            <tr>
+                <th class="th-nested" scope="col">UV Index</th>
+                <td>@WeatherDescription.UVIndex</td> 
+            </tr>
+        </tbody>
+    </table>
+}
+
+@code {
+
+    [Parameter]
+    public required WeatherDescriptionDTO WeatherDescription {get; set;}
+}
