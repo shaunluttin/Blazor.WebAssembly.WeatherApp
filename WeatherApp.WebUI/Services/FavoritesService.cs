@@ -1,4 +1,3 @@
-
 using WeatherApp.WebUI.DTOs;
 
 namespace WeatherApp.WebUI.Services;
@@ -36,16 +35,7 @@ public class FavoritesService : IFavoritesService
 
     public async Task RemoveFavorite(int cityId)
     {
-        Console.WriteLine("-------");
-        Console.WriteLine("Remove");
-        Console.WriteLine("-------");
         var requestPath = $"favorites?cityId={cityId}";
-        Console.WriteLine("-------");
-        Console.WriteLine(requestPath);
-        Console.WriteLine("-------");
         await _httpClient.DeleteAsync(requestPath);
-        Console.WriteLine("-------");
-        Console.WriteLine("Removed");
-        Console.WriteLine("-------");
     }
 }
