@@ -4,29 +4,28 @@ namespace WeatherApp.WebUI.DTOs;
 
 public class ForecastedWeatherDTO
 {
-    public WeatherLocationDTO? Location { get; set; }
+    public required WeatherLocationDTO Location { get; set; }
 
     [JsonPropertyName("forecast")]
-    public ForecastDTO Forecast { get; set; }
+    public required ForecastDTO Forecast { get; set; }
 }
 
 public class ForecastDTO
 {
     [JsonPropertyName("forecastday")]
-    public ForecastDayDTO[] ForecastDay { get; set; }
+    public required ForecastDayDTO[] ForecastDay { get; set; }
 }
 
 public class ForecastDayDTO
 {
     [JsonPropertyName("date")]
-    public string Date { get; set; }
+    public required string Date { get; set; }
 
     [JsonPropertyName("date_epoch")]
     public int UnixTime { get; set; }
 
     [JsonPropertyName("day")]
-    public ForecastDescriptionDTO Day { get; set; }
-
+    public required ForecastDescriptionDTO Day { get; set; }
 }
 
 public class ForecastDescriptionDTO
