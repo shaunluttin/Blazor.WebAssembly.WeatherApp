@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using WeatherApp.WebUI.Components;
 using WeatherApp.WebUI.Services;
 
