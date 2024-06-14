@@ -4,9 +4,9 @@
 @using WeatherApp.WebUI.Services
 @inject IWeatherService WeatherService
 
-<PageTitle>Weather</PageTitle>
+<PageTitle>Weather for @CityName</PageTitle>
 
-<h1>Weather</h1>
+<h1>Weather for @CityName</h1>
 
 @if (currentWeather == null)
 {
