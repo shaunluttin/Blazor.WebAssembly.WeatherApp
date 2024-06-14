@@ -3,18 +3,20 @@
 @using System.ComponentModel.DataAnnotations
 @using WeatherApp.WebUI.DTOs
 @using WeatherApp.WebUI.Services
+@using WeatherApp.WebUI.Components.NonPages
 @inject IWeatherService WeatherService
-@inject IFavoritesService FavoritesService
 
 <PageTitle>Weather for @CityName</PageTitle>
 
 <h1>Weather for @CityName</h1>
 
-@if(IsFavorite) {
+<FavoritesButton CityName="@CityName" CityId="@CityId" />
+
+@* @if(IsFavorite) {
     <button @onclick="RemoveFromFavorites">Remove from Favorites</button>
 } else {
     <button @onclick="AddToFavorites">Add to Favorites</button>
-}
+} *@
 
 @if (currentWeather == null)
 {
@@ -136,11 +138,9 @@ else
 }
 
 @code {
-    @* We use this one simply to make the URI readably for the end-user. *@
     [Parameter]
     public required string CityName {get; set;}
 
-    @* We use this one to lookup the city from the API. *@
     [Parameter]
     public required int CityId {get; set;}
 
@@ -157,21 +157,5 @@ else
         // so we pass one extra and then skip the first one.
         var forecastedWeatherDTO = await WeatherService.GetWeatherForecastByCityId(CityId, days: 4);
         forecastDays = forecastedWeatherDTO.Forecast.ForecastDay.Skip(1);
-    }
-
-    @* TODO Populate this programmatically from the database. *@
-    @* TODO Break out an FavoritesButton component *@
-    private bool IsFavorite = false;
-
-    private Task AddToFavorites()
-    {
-        IsFavorite = true;
-        return Task.CompletedTask;
-    }
-
-    private Task RemoveFromFavorites()
-    {
-        IsFavorite = false;
-        return Task.CompletedTask;
     }
 }

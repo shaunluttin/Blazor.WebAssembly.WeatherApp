@@ -1,0 +1,33 @@
+﻿@rendermode InteractiveServer
+@using WeatherApp.WebUI.DTOs
+@using WeatherApp.WebUI.Services
+@inject IFavoritesService FavoritesService
+
+@if(IsFavorite) {
+    <button @onclick="RemoveFromFavorites">Remove from Favorites</button>
+} else {
+    <button @onclick="AddToFavorites">Add to Favorites</button>
+}
+
+@code {
+    [Parameter]
+    public required string CityName {get; set;}
+
+    [Parameter]
+    public required int CityId {get; set;}
+
+    @* TODO Populate this programmatically from the database. *@
+    private bool IsFavorite = false;
+
+    private Task AddToFavorites()
+    {
+        IsFavorite = true;
+        return Task.CompletedTask;
+    }
+
+    private Task RemoveFromFavorites()
+    {
+        IsFavorite = false;
+        return Task.CompletedTask;
+    }
+}
