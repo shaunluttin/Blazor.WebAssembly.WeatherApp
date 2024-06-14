@@ -49,28 +49,3 @@ h1:focus {
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
 }
-
-/* 
-    TODO Add this as scoped/isolated CSS via a WeatherResults.razor.css page.
-    TODO Further levege the Bootstrap classes instead of this custom stuff.
-    TODO Make the tables sit side-by-side on large screens - looks nicer.
-*/
-.table-weather td {
-    text-align: center;
-}
-
-.table-weather .th-section {
-    /* We used Bootstraps table-active class. */
-}
-
-.table-weather .th-nested {
-    padding-left:50px;
-}
-
-.table-weather-current {
-    max-width:400px;
-}
-
-.table-weather-forecast {
-    max-width:600px;
-}
