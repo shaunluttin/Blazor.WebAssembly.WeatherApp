@@ -14,58 +14,54 @@
 }
 else
 {
-    <table class="table">
+    <table class="table table-bordered table-weather table-weather-current">
         <caption class="caption-top">Current Weather</caption>
-        <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
         <tbody>
             <tr>
-                <th colspan="2" scope="col">Fahrenheit</th>
+                <th class="th-section table-active" colspan="2" scope="col">Fahrenheit</th>
             </tr>
             <tr>
-                @* TODO Consider not breaking the Law of Demeter here. *@
-                <th scope="col">Current Temp</th>
-                <td>@currentWeather.Current.Fahrenheit</td>
+                <th class="th-nested" scope="col">Current Temp</th>
+                <td>@currentWeather.Fahrenheit</td>
             </tr>
             <tr>
-                <th scope="col">Feels Like</th>
-                <td>@currentWeather.Current.FeelsLikeFahrenheit</td>
+                <th class="th-nested" scope="col">Feels Like</th>
+                <td>@currentWeather.FeelsLikeFahrenheit</td>
             </tr>
             <tr>
-                <th colspan="2" scope="col">Celcius</th>
+                <th class="th-section table-active" colspan="2" scope="col">Celcius</th>
             </tr>
             <tr>
-                <th scope="col">Current Temp</th>
-                <td>@currentWeather.Current.Celcius</td>
+                <th class="th-nested" scope="col">Current Temp</th>
+                <td>@currentWeather.Celcius</td>
             </tr>
             <tr>
-                <th scope="col">Feels Like</th>
-                <td>@currentWeather.Current.FeelsLikeCelcius</td>
+                <th class="th-nested" scope="col">Feels Like</th>
+                <td>@currentWeather.FeelsLikeCelcius</td>
             </tr>
             <tr>
-                <th scope="col">Humidity</th>
-                <td>@currentWeather.Current.Humidity</td>
+                <th class="th-section table-active" colspan="2" scope="col">Other Measures</th>
             </tr>
             <tr>
-                <th scope="col">Atmospheric Pressure (MB)</th>
-                <td>@currentWeather.Current.AtmosphericPressure</td>
+                <th class="th-nested" scope="col">Humidity</th>
+                <td>@currentWeather.Humidity</td>
             </tr>
             <tr>
-                <th scope="col">Wind Speed (MPH)</th>
-                <td>@currentWeather.Current.WindSpeedMph</td>
+                <th class="th-nested" scope="col">Atmospheric Pressure (MB)</th>
+                <td>@currentWeather.AtmosphericPressure</td>
             </tr>
             <tr>
-                <th scope="col">UV Index:</th>
-                <td>@currentWeather.Current.UVIndex</td> 
+                <th class="th-nested" scope="col">Wind Speed (MPH)</th>
+                <td>@currentWeather.WindSpeedMph</td>
+            </tr>
+            <tr>
+                <th class="th-nested" scope="col">UV Index:</th>
+                <td>@currentWeather.UVIndex</td> 
             </tr>
         </tbody>
     </table>
 
-    <table class="table">
+    <table class="table table-bordered table-weather">
         <caption class="caption-top">Three Day Forecast</caption>
         <thead>
             <tr>
@@ -78,48 +74,48 @@ else
         </thead>
         <tbody>
             <tr>
-                <th colspan="5" scope="col">Fahrenheit</th>
+                <th class="th-section table-active" colspan="5" scope="col">Fahrenheit</th>
             </tr>
             <tr>
-                <th colspan="2" scope="col">Ave</th>
+                <th class="th-nested" colspan="2" scope="col">Ave</th>
                 @foreach(var forecast in forecastDays) 
                 {
                     <td>@forecast.Day.AverageFahrenheit</td>
                 }
             </tr>
             <tr>
-                <th colspan="2" scope="col">Min</th>
+                <th class="th-nested" colspan="2" scope="col">Min</th>
                 @foreach(var forecast in forecastDays) 
                 {
                     <td>@forecast.Day.MinFahrenheit</td>
                 }
             </tr>
             <tr>
-                <th colspan="2" scope="col">Max</th>
+                <th class="th-nested" colspan="2" scope="col">Max</th>
                 @foreach(var forecast in forecastDays) 
                 {
                     <td>@forecast.Day.MaxFahrenheit</td>
                 }
             </tr>
             <tr>
-                <th colspan="5" scope="col">Celsius</th>
+                <th class="th-section table-active" colspan="5" scope="col">Celsius</th>
             </tr>
             <tr>
-                <th colspan="2" scope="col">Ave</th>
+                <th class="th-nested" colspan="2" scope="col">Ave</th>
                 @foreach(var forecast in forecastDays) 
                 {
                     <td>@forecast.Day.AverageCelcius</td>
                 }
             </tr>
             <tr>
-                <th colspan="2" scope="col">Min</th>
+                <th class="th-nested" colspan="2" scope="col">Min</th>
                 @foreach(var forecast in forecastDays) 
                 {
                     <td>@forecast.Day.MinCelcius</td>
                 }
             </tr>
             <tr>
-                <th colspan="2" scope="col">Max</th>
+                <th class="th-nested" colspan="2" scope="col">Max</th>
                 @foreach(var forecast in forecastDays) 
                 {
                     <td>@forecast.Day.MaxCelcius</td>
@@ -138,17 +134,18 @@ else
     [Parameter]
     public required int CityId {get; set;}
 
-    private CurrentWeatherDTO? currentWeather;
+    private WeatherDescriptionDTO currentWeather;
 
     private IEnumerable<ForecastDayDTO> forecastDays;
 
     protected override async Task OnInitializedAsync()
     {
-        currentWeather = await WeatherService.GetCurrentWeatherByCityId(CityId);
+        var currentWeatherDTO = await WeatherService.GetCurrentWeatherByCityId(CityId);
+        currentWeather = currentWeatherDTO.Current;
 
         // The forecast includes the current date,
         // so we pass one extra and then skip the first one.
-        var forecastedWeather = await WeatherService.GetWeatherForecastByCityId(CityId, days: 4);
-        forecastDays = forecastedWeather.Forecast.ForecastDay.Skip(1);
+        var forecastedWeatherDTO = await WeatherService.GetWeatherForecastByCityId(CityId, days: 4);
+        forecastDays = forecastedWeatherDTO.Forecast.ForecastDay.Skip(1);
     }
 }
