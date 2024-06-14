@@ -1,13 +1,8 @@
 @using System.ComponentModel.DataAnnotations
 @using WeatherApp.WebUI.DTOs
 
-@if (Cities == null)
+@if (Cities != null)
 {
-    <p><em>Please search for city by name.</em></p>
-}
-else
-{
-
     <table class="table table-sm table-bordered table-hover table-striped">
         <thead>
             <tr>
