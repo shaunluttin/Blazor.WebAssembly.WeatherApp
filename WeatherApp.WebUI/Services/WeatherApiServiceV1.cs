@@ -1,14 +1,13 @@
-using System.Text.Json.Nodes;
 using WeatherApp.WebUI.DTOs;
 
 namespace WeatherApp.WebUI.Services;
 
-public class WeatherApiService : IWeatherService
+public class WeatherApiServiceV1 : IWeatherService
 {
     private readonly string? _apiKey;
     private readonly HttpClient _httpClient;
 
-    public WeatherApiService(IConfiguration config, HttpClient httpClient)
+    public WeatherApiServiceV1(IConfiguration config, HttpClient httpClient)
     {
         // See also 
         _apiKey = config["WeatherApiKey"];

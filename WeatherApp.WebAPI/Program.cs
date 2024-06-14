@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<WeatherDb>(options => options.UseInMemoryDatabase("WeatherDb5"));
+builder.Services.AddDbContext<WeatherDb>(options => options.UseInMemoryDatabase("WeatherDb"));
 
 var app = builder.Build();
 

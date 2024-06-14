@@ -7,9 +7,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-// Register server-side weather service with an HTTP Client.
-builder.Services.AddSingleton<IWeatherService, WeatherApiService>();
-builder.Services.AddHttpClient<IWeatherService, WeatherApiService>(client => 
+// Register third-party WeatherAPI service with an HTTP Client.
+builder.Services.AddSingleton<IWeatherService, WeatherApiServiceV1>();
+builder.Services.AddHttpClient<IWeatherService, WeatherApiServiceV1>(client => 
+{
+    // The base address probably has to end with a trailing slash.
+    client.BaseAddress = new Uri("http://api.weatherapi.com/v1/");
+});
+
+// Register internal WeatherApp service with an HTTP Client.
+builder.Services.AddSingleton<IFavoritesService, FavoritesService>();
+builder.Services.AddHttpClient<IFavoritesService, FavoritesService>(client => 
 {
     // The base address probably has to end with a trailing slash.
     client.BaseAddress = new Uri("http://api.weatherapi.com/v1/");
