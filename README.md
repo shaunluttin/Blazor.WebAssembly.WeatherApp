@@ -4,7 +4,7 @@ Demo Blazer Web Assembly web application.
 
 ## Usuage
 
-```
+```powershell
 # Clone the app and enter its directory.
 git clone git@github.com:shaunluttin/Blazor.WebAssembly.WeatherApp.git
 cd Blazor.WebAssembly.WeatherApp
@@ -20,3 +20,5 @@ dotnet watch run --project .\WeatherApp.WebUI\WeatherApp.WebUI.csproj
 ```
 
 ![](./DeveloperNotes/demo-weather-app.gif)
+
+This GIF very simply demonstrates the usuage instructions from PowerShell.
