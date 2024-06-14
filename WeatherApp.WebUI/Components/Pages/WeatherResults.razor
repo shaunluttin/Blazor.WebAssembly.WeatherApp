@@ -55,7 +55,7 @@ else
                 <td>@currentWeather.WindSpeedMph</td>
             </tr>
             <tr>
-                <th class="th-nested" scope="col">UV Index:</th>
+                <th class="th-nested" scope="col">UV Index</th>
                 <td>@currentWeather.UVIndex</td> 
             </tr>
         </tbody>
@@ -68,7 +68,9 @@ else
                 <th colspan="2" scope="col"></th>
                 @foreach(var forecast in forecastDays) 
                 {
-                    <th>@forecast.Date</th>
+                    <th>
+                        @(DateTime.Parse(forecast.Date).ToString("dddd d MMM"))
+                    </th>
                 }
             </tr>
         </thead>
