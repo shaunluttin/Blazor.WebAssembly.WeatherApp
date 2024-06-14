@@ -1,16 +1,17 @@
 using WeatherApp.WebUI.DTOs;
+using WeatherApp.WebUI.Extensions;
 
 namespace WeatherApp.WebUI.Services;
 
 public class FavoritesService : IFavoritesService
 {
-    private readonly string? _apiKey;
+    private readonly string _apiKey;
     private readonly HttpClient _httpClient;
 
     public FavoritesService(IConfiguration config, HttpClient httpClient)
     {
-        // TODO Populate and use an Internal API Key.
-        _apiKey = config["DEMO_InternalApiKey"];
+        // TODO Use an Internal API Key to protect the internal API.
+        _apiKey = config.GetOrThrow("DEMO_InternalApiKey");
         _httpClient = httpClient;
     }
 

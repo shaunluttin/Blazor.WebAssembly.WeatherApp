@@ -1,16 +1,17 @@
 using WeatherApp.WebUI.DTOs;
+using WeatherApp.WebUI.Extensions;
 
 namespace WeatherApp.WebUI.Services;
 
 public class WeatherApiServiceV1 : IWeatherService
 {
-    private readonly string? _apiKey;
+    private readonly string _apiKey;
     private readonly HttpClient _httpClient;
 
     public WeatherApiServiceV1(IConfiguration config, HttpClient httpClient)
     {
         // See also 
-        _apiKey = config["DEMO_WeatherApiKey"];
+        _apiKey = config.GetOrThrow("DEMO_WeatherApiKey");
         _httpClient = httpClient;
     }
 
