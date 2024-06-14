@@ -30,7 +30,7 @@
 * [x] Use proper API key management. 
 * [x] Display the search results using the Search/Autocomplete service.
 * [x] Display the weather information for the selected city using WeatherAPI data.
-* [ ] Allow users to save cities as favorites and view their list of favorites.*
+* [x] Allow users to save cities as favorites and view their list of favorites.
 
 # Design 
 
@@ -39,8 +39,8 @@
 * [x] Create a results page that shows the weather for the selected city.
 * [x] Include current temparature in F and C, Feels Like, et cetera.
 * [x] Display a three day forecast. 
-* [ ] Create a page to manage favorite cities.*
-* [ ] The favorite cities list should include the current weather.*
+* [x] Create a page to manage favorite cities.
+* [x] The favorite cities list should include the current weather.
 
 # Backend Internal API
 
