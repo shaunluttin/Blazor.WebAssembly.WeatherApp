@@ -23,19 +23,34 @@
 # Requirements
 
 * [x] Create a user interface for user to search for weather in a city. 
-* [ ] User the public WeatherAPI to obtain weather information. 
+* [x] Use the public WeatherAPI to obtain weather information. 
 * [x] Use the provided API key.
 * [x] Use proper API key management. 
 * [x] Display the search results using the Search/Autocomplete service.
-* [ ] Display the weather information for the selected city using WeatherAPI data.
+* [x] Display the weather information for the selected city using WeatherAPI data.
 * [ ] Allow users to save cities as favorites and view their list of favorites.
+* [ ]
 
 # Design 
 
 * [x] Create a homepage that allows users to search for the weather in a city.
 * [x] Create a component for the city list and use it in the lists.
-* [ ] Create a results page that shows the weather for the selected city.
-* [ ] Include current temparature in F and C, Feels Like...
+* [x] Create a results page that shows the weather for the selected city.
+* [x] Include current temparature in F and C, Feels Like, et cetera.
+* [x] Display a three day forecast. 
+* [ ] Create a page to manage favorite cities.
+* [ ] The favorite cities list should include the current weather.
+
+# Backend Internal API
+
+* [ ] API to manage simple user registration with nickname and PIN.
+* [ ] Provide endpoints for managing favorite cities: add, delete, list.
+
+# Additional Technical Requirements
+
+* [ ] Handle errors and exception appropriatly when public API is not available.
+* [ ] Handle other API error responses appropriately.
+* [ ] Nice-to-have: protect the API endpoints basic Auth0.
 
 # Thursday 13 June 2024
 
