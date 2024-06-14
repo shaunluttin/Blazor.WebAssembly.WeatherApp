@@ -45,7 +45,7 @@
 # Backend Internal API
 
 * [ ] API to manage simple user registration with nickname and PIN.
-* [ ] Provide endpoints for managing favorite cities: add, delete, list.
+* [x] Provide endpoints for managing favorite cities: add, delete, list. Done.
 
 # Additional Technical Requirements
 
