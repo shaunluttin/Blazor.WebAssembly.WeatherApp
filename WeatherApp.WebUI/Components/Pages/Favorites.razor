@@ -2,38 +2,35 @@
 @rendermode InteractiveServer
 @using WeatherApp.WebUI.Services
 @using WeatherApp.WebUI.DTOs
+@using WeatherApp.WebUI.Components.NonPages
 @inject IFavoritesService FavoritesService
+@inject IWeatherService WeatherService
 
 <PageTitle>Favorites</PageTitle>
 
 <h1>Favorites</h1>
 
-@if (favorites != null)
+@if (favoritesWeather != null)
 {
-    <table class="table table-sm table-bordered table-hover table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Id</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var favorite in favorites)
-            {
-                <tr onclick="window.location='/weather/@favorite.CityName/@favorite.CityId'">
-                    <td>@favorite.CityName</td>
-                    <td>@favorite.CityId</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    @foreach (var (favorite, currentWeather) in favoritesWeather)
+    {
+        <h3>@favorite.CityName</h3>
+        <a href="/weather/@favorite.CityName/@favorite.CityId">Click here for details.</a>
+        <CurrentWeather WeatherDescription="@currentWeather" />
+    }
 }
 
 @code {
-    private FavoriteCityDTO[]? favorites;
+    private List<(FavoriteCityDTO, WeatherDescriptionDTO?)>? favoritesWeather = new List<(FavoriteCityDTO, WeatherDescriptionDTO)>();
 
     protected override async Task OnInitializedAsync()
     {
-        favorites = await FavoritesService.GetFavorites();
+        var favorites = await FavoritesService.GetFavorites();
+
+        foreach(var favorite in favorites) 
+        {
+            var currentWeather = await WeatherService.GetCurrentWeatherByCityId(favorite.CityId);
+            favoritesWeather.Add((favorite, currentWeather.Current));
+        }
     }
 }

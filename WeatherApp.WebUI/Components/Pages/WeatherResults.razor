@@ -14,77 +14,7 @@
 
 <CurrentWeather WeatherDescription="@currentWeather" />
 
-@if (forecastDays == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table table-sm table-bordered table-weather table-weather-forecast">
-        <caption class="caption-top">Three Day Forecast</caption>
-        <thead>
-            <tr>
-                <th colspan="2" scope="col"></th>
-                @foreach(var forecast in forecastDays) 
-                {
-                    <th>
-                        @(DateTime.Parse(forecast.Date).ToString("dddd d MMM"))
-                    </th>
-                }
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th class="th-section table-active" colspan="5" scope="col">Fahrenheit</th>
-            </tr>
-            <tr>
-                <th class="th-nested" colspan="2" scope="col">Ave</th>
-                @foreach(var forecast in forecastDays) 
-                {
-                    <td>@forecast.Day.AverageFahrenheit</td>
-                }
-            </tr>
-            <tr>
-                <th class="th-nested" colspan="2" scope="col">Min</th>
-                @foreach(var forecast in forecastDays) 
-                {
-                    <td>@forecast.Day.MinFahrenheit</td>
-                }
-            </tr>
-            <tr>
-                <th class="th-nested" colspan="2" scope="col">Max</th>
-                @foreach(var forecast in forecastDays) 
-                {
-                    <td>@forecast.Day.MaxFahrenheit</td>
-                }
-            </tr>
-            <tr>
-                <th class="th-section table-active" colspan="5" scope="col">Celsius</th>
-            </tr>
-            <tr>
-                <th class="th-nested" colspan="2" scope="col">Ave</th>
-                @foreach(var forecast in forecastDays) 
-                {
-                    <td>@forecast.Day.AverageCelcius</td>
-                }
-            </tr>
-            <tr>
-                <th class="th-nested" colspan="2" scope="col">Min</th>
-                @foreach(var forecast in forecastDays) 
-                {
-                    <td>@forecast.Day.MinCelcius</td>
-                }
-            </tr>
-            <tr>
-                <th class="th-nested" colspan="2" scope="col">Max</th>
-                @foreach(var forecast in forecastDays) 
-                {
-                    <td>@forecast.Day.MaxCelcius</td>
-                }
-            </tr>
-        </tbody>
-    </table>
-}
+<WeatherForecast ForecastDays="@forecastDays" />
 
 @code {
     [Parameter]
@@ -93,9 +23,9 @@ else
     [Parameter]
     public required int CityId {get; set;}
 
-    private WeatherDescriptionDTO currentWeather;
+    private WeatherDescriptionDTO? currentWeather;
 
-    private IEnumerable<ForecastDayDTO> forecastDays;
+    private IEnumerable<ForecastDayDTO>? forecastDays;
 
     protected override async Task OnInitializedAsync()
     {
