@@ -15,10 +15,12 @@ dotnet watch run --project .\WeatherApp.WebAPI\WeatherApp.WebAPI.csproj
 
 # Run the UI in another terminal window.
 # Its launchSettings.json sets port 5008 over HTTP and 7084 over HTTPS
-dotnet user-secrets --project .\WeatherApp.WebUI\WeatherApp.WebUI.csproj set "DEMO_WeatherApiKey" "<SECRET_KEY>"
+dotnet user-secrets --project .\WeatherApp.WebUI\WeatherApp.WebUI.csproj set "DEMO_WeatherApiKey" "<API_SECRET_KEY>"
 dotnet watch run --project .\WeatherApp.WebUI\WeatherApp.WebUI.csproj
 ```
 
 ![](./DeveloperNotes/demo-weather-app.gif)
 
 This GIF very simply demonstrates the usuage instructions from PowerShell.
+
+For the `API_SECRET_KEY`, you will need an API key for the https://www.weatherapi.com/ service.
