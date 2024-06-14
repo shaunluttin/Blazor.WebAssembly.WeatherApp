@@ -15,6 +15,7 @@
 else
 {
     <table class="table">
+        <caption class="caption-top">Current Weather</caption>
         <thead>
             <tr>
                 <th scope="col"></th>
@@ -23,20 +24,26 @@ else
         </thead>
         <tbody>
             <tr>
+                <th colspan="2" scope="col">Fahrenheit</th>
+            </tr>
+            <tr>
                 @* TODO Consider not breaking the Law of Demeter here. *@
-                <th scope="col">Fahrenheit</th>
+                <th scope="col">Current Temp</th>
                 <td>@currentWeather.Current.Fahrenheit</td>
             </tr>
             <tr>
-                <th scope="col">Celsius</th>
-                <td>@currentWeather.Current.Celcius</td>
-            </tr>
-            <tr>
-                <th scope="col">Feels Like, Fahrenheit</th>
+                <th scope="col">Feels Like</th>
                 <td>@currentWeather.Current.FeelsLikeFahrenheit</td>
             </tr>
             <tr>
-                <th scope="col">Feels Like, Celsius</th>
+                <th colspan="2" scope="col">Celcius</th>
+            </tr>
+            <tr>
+                <th scope="col">Current Temp</th>
+                <td>@currentWeather.Current.Celcius</td>
+            </tr>
+            <tr>
+                <th scope="col">Feels Like</th>
                 <td>@currentWeather.Current.FeelsLikeCelcius</td>
             </tr>
             <tr>
@@ -59,10 +66,11 @@ else
     </table>
 
     <table class="table">
+        <caption class="caption-top">Three Day Forecast</caption>
         <thead>
             <tr>
-                <th scope="col"></th>
-                @foreach(var forecast in forecastedWeather.Forecast.ForecastDay.Skip(1)) 
+                <th colspan="2" scope="col"></th>
+                @foreach(var forecast in forecastDays) 
                 {
                     <th>@forecast.Date</th>
                 }
@@ -70,43 +78,49 @@ else
         </thead>
         <tbody>
             <tr>
-                <th scope="col">Fahrenheit - Ave</th>
-                @foreach(var forecast in forecastedWeather.Forecast.ForecastDay.Skip(1))
+                <th colspan="5" scope="col">Fahrenheit</th>
+            </tr>
+            <tr>
+                <th colspan="2" scope="col">Ave</th>
+                @foreach(var forecast in forecastDays) 
                 {
                     <td>@forecast.Day.AverageFahrenheit</td>
                 }
             </tr>
             <tr>
-                <th scope="col">Fahrenheit - Min</th>
-                @foreach(var forecast in forecastedWeather.Forecast.ForecastDay.Skip(1))
+                <th colspan="2" scope="col">Min</th>
+                @foreach(var forecast in forecastDays) 
                 {
                     <td>@forecast.Day.MinFahrenheit</td>
                 }
             </tr>
             <tr>
-                <th scope="col">Fahrenheit - Max</th>
-                @foreach(var forecast in forecastedWeather.Forecast.ForecastDay.Skip(1))
+                <th colspan="2" scope="col">Max</th>
+                @foreach(var forecast in forecastDays) 
                 {
                     <td>@forecast.Day.MaxFahrenheit</td>
                 }
             </tr>
             <tr>
-                <th scope="col">Celsius - Ave</th>
-                @foreach(var forecast in forecastedWeather.Forecast.ForecastDay.Skip(1))
+                <th colspan="5" scope="col">Celsius</th>
+            </tr>
+            <tr>
+                <th colspan="2" scope="col">Ave</th>
+                @foreach(var forecast in forecastDays) 
                 {
                     <td>@forecast.Day.AverageCelcius</td>
                 }
             </tr>
             <tr>
-                <th scope="col">Celsius - Min</th>
-                @foreach(var forecast in forecastedWeather.Forecast.ForecastDay.Skip(1))
+                <th colspan="2" scope="col">Min</th>
+                @foreach(var forecast in forecastDays) 
                 {
                     <td>@forecast.Day.MinCelcius</td>
                 }
             </tr>
             <tr>
-                <th scope="col">Celsius - Max</th>
-                @foreach(var forecast in forecastedWeather.Forecast.ForecastDay.Skip(1))
+                <th colspan="2" scope="col">Max</th>
+                @foreach(var forecast in forecastDays) 
                 {
                     <td>@forecast.Day.MaxCelcius</td>
                 }
@@ -126,7 +140,7 @@ else
 
     private CurrentWeatherDTO? currentWeather;
 
-    private ForecastedWeatherDTO? forecastedWeather;
+    private IEnumerable<ForecastDayDTO> forecastDays;
 
     protected override async Task OnInitializedAsync()
     {
@@ -134,6 +148,7 @@ else
 
         // The forecast includes the current date,
         // so we pass one extra and then skip the first one.
-        forecastedWeather = await WeatherService.GetWeatherForecastByCityId(CityId, days: 4);
+        var forecastedWeather = await WeatherService.GetWeatherForecastByCityId(CityId, days: 4);
+        forecastDays = forecastedWeather.Forecast.ForecastDay.Skip(1);
     }
 }
