@@ -10,7 +10,7 @@ public class WeatherApiServiceV1 : IWeatherService
     public WeatherApiServiceV1(IConfiguration config, HttpClient httpClient)
     {
         // See also 
-        _apiKey = config["WeatherApiKey"];
+        _apiKey = config["DEMO_WeatherApiKey"];
         _httpClient = httpClient;
     }
 

@@ -15,7 +15,7 @@ dotnet watch run --project .\WeatherApp.WebAPI\WeatherApp.WebAPI.csproj
 
 # Run the UI in another terminal window.
 # Its launchSettings.json sets port 5008 over HTTP and 7084 over HTTPS
-dotnet user-secrets --project .\WeatherApp.WebUI\WeatherApp.WebUI.csproj set "WeatherApiKey" "<SECRET_KEY>"
+dotnet user-secrets --project .\WeatherApp.WebUI\WeatherApp.WebUI.csproj set "DEMO_WeatherApiKey" "<SECRET_KEY>"
 dotnet watch run --project .\WeatherApp.WebUI\WeatherApp.WebUI.csproj
 ```
 

@@ -29,6 +29,17 @@
 * [ ] Handle other API error responses appropriately.
 * [ ] Nice-to-have: protect the API endpoints basic Auth0.
 
+# Personal TODO Items / Distractions
+
+* [ ] Style the search box.
+* [ ] Title the "Home" page as "Search".
+* [x] Update README.md with instructions to start the app.
+* [ ] Create a single PowerShell script to start the app.
+* [ ] Use SQLite instead of an InMemory database.
+* [ ] Add automated tests.
+* [ ] Address compiler warnings (but do it correctly).
+* [ ] Use ":" to namespace configuration settings.
+
 # Pomodoros (25 minute blocks)
 
 * Analyze initial requirements. Done. 
@@ -68,7 +79,7 @@ dotnet new bunit --targetSdk net8.0 --framework xunit -o WeatherApp.WebUI.Tests
 dotnet sln add .\WeatherApp.WebUI.Tests\WeatherApp.WebUI.Tests.csproj
 dotnet add .\WeatherApp.WebUI.Tests\WeatherApp.WebUI.Tests.csproj reference .\WeatherApp.WebUI\WeatherApp.WebUI.csproj
 dotnet user-secrets --project .\WeatherApp.WebUI\WeatherApp.WebUI.csproj init
-dotnet user-secrets --project .\WeatherApp.WebUI\WeatherApp.WebUI.csproj set "WeatherApiKey" "<SECRET>"
+dotnet user-secrets --project .\WeatherApp.WebUI\WeatherApp.WebUI.csproj set "DEMO_WeatherApiKey" "<SECRET>"
 ```
 
 Resources:

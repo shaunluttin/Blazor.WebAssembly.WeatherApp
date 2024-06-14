@@ -12,7 +12,7 @@ builder.Services.AddSingleton<IWeatherService, WeatherApiServiceV1>();
 builder.Services.AddHttpClient<IWeatherService, WeatherApiServiceV1>(client => 
 {
     // The base address probably has to end with a trailing slash.
-    var baseAddress = builder.Configuration["WeatherApiBaseAddress"];
+    var baseAddress = builder.Configuration["DEMO_WeatherApiBaseAddress"];
     client.BaseAddress = new Uri(baseAddress);
 });
 
@@ -21,7 +21,7 @@ builder.Services.AddSingleton<IFavoritesService, FavoritesService>();
 builder.Services.AddHttpClient<IFavoritesService, FavoritesService>(client => 
 {
     // The base address probably has to end with a trailing slash.
-    var baseAddress = builder.Configuration["InternalApiBaseAddress"];
+    var baseAddress = builder.Configuration["DEMO_InternalApiBaseAddress"];
     client.BaseAddress = new Uri(baseAddress);
 });
 

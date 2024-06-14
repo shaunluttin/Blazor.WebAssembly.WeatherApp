@@ -9,8 +9,8 @@ public class FavoritesService : IFavoritesService
 
     public FavoritesService(IConfiguration config, HttpClient httpClient)
     {
-        // TODO Populate and use the Internal API Key.
-        _apiKey = config["InternalApiKey"];
+        // TODO Populate and use an Internal API Key.
+        _apiKey = config["DEMO_InternalApiKey"];
         _httpClient = httpClient;
     }
 
