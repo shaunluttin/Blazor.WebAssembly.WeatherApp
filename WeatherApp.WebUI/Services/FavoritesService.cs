@@ -25,7 +25,7 @@ public class FavoritesService : IFavoritesService
     {
         var requestPath = "favorites";
         var result = await _httpClient.GetFromJsonAsync<FavoriteCityDTO[]>(requestPath);
-        return result;
+        return result ?? [];
     }
 
     public async Task<bool> IsFavorite(int cityId)

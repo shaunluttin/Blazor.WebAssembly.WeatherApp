@@ -10,16 +10,21 @@ public class WeatherApiServiceV1 : IWeatherService
 
     public WeatherApiServiceV1(IConfiguration config, HttpClient httpClient)
     {
-        // See also 
+        // See also
         _apiKey = config.GetOrThrow("DEMO_WeatherApiKey");
         _httpClient = httpClient;
     }
 
-    // TODO Maybe delete this, because the Forecast method includes current weather.
     public async Task<CurrentWeatherDTO> GetCurrentWeatherByCityId(int cityId)
     {
         var requestPath = $"current.json?key={_apiKey}&q=id:{cityId}";
         var result = await _httpClient.GetFromJsonAsync<CurrentWeatherDTO>(requestPath);
+
+        if (result == null)
+        {
+            throw new FileNotFoundException($"No weather results for {nameof(cityId)}:{cityId}.");
+        }
+
         return result;
     }
 
@@ -27,6 +32,12 @@ public class WeatherApiServiceV1 : IWeatherService
     {
         var requestPath = $"forecast.json?key={_apiKey}&q=id:{cityId}&days={days}&aqi=no&alerts=no";
         var result = await _httpClient.GetFromJsonAsync<ForecastedWeatherDTO>(requestPath);
+
+        if (result == null)
+        {
+            throw new FileNotFoundException($"No forecast results for {nameof(cityId)}:{cityId}.");
+        }
+
         return result;
     }
 
