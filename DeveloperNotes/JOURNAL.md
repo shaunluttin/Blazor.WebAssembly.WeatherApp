@@ -39,8 +39,8 @@
 * [x] Create a results page that shows the weather for the selected city.
 * [x] Include current temparature in F and C, Feels Like, et cetera.
 * [x] Display a three day forecast. 
-* [ ] Create a page to manage favorite cities.
-* [ ] The favorite cities list should include the current weather.
+* [ ] Create a page to manage favorite cities.*
+* [ ] The favorite cities list should include the current weather.*
 
 # Backend Internal API
 
@@ -52,6 +52,12 @@
 * [ ] Handle errors and exception appropriatly when public API is not available.
 * [ ] Handle other API error responses appropriately.
 * [ ] Nice-to-have: protect the API endpoints basic Auth0.
+
+# Friday 14 June 2024
+
+Resources
+
+- https://learn.microsoft.com/en-us/training/modules/build-web-api-minimal-database/3-exercise-add-entity-framework-core
 
 # Thursday 13 June 2024
 
