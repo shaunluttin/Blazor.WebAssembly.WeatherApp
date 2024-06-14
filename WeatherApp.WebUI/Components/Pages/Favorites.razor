@@ -21,13 +21,14 @@
 }
 
 @code {
-    private List<(FavoriteCityDTO, WeatherDescriptionDTO?)>? favoritesWeather = new List<(FavoriteCityDTO, WeatherDescriptionDTO)>();
+    private List<(FavoriteCityDTO, WeatherDescriptionDTO?)> favoritesWeather 
+        = new List<(FavoriteCityDTO, WeatherDescriptionDTO?)>();
 
     protected override async Task OnInitializedAsync()
     {
         var favorites = await FavoritesService.GetFavorites();
 
-        foreach(var favorite in favorites) 
+        foreach(var favorite in favorites)
         {
             var currentWeather = await WeatherService.GetCurrentWeatherByCityId(favorite.CityId);
             favoritesWeather.Add((favorite, currentWeather.Current));
